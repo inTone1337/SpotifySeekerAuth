@@ -1,2 +1,2 @@
 # SpotifySeekerAuth
-Spotify token swap server for Spotify Seeker.
+Spotify's "Token Swap and Refresh" implemented as an Azure Function.
