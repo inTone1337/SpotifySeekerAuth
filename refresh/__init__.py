@@ -1,14 +1,15 @@
 import logging
 import json
+import requests
 import azure.functions as func
 
 spotify_token_endpoint = "https://accounts.spotify.com/api/token"
 
 
 def main(request: func.HttpRequest) -> func.HttpResponse:
-    request_json = request.get_json()
-    grant_type = request_json["grant_type"]
-    refresh_token = request_json["refresh_token"]
+    # TODO: Add Spotify Client ID and Secret to request.
+    spotify_request = requests.post(spotify_token_endpoint, request.get_json())
+    logging.debug(spotify_request.text)
 
     # TODO: Fill this with data received from Spotify.
     response = {}
@@ -16,4 +17,4 @@ def main(request: func.HttpRequest) -> func.HttpResponse:
     response["expires_in"] = None
     response_json = json.dumps(response)
 
-    return func.HttpResponse(f"Received {request_json}. Replied {response_json}.")
+    return func.HttpResponse(f"Received {request.get_json()}. Replied {response_json}.")
