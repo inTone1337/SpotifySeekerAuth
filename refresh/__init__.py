@@ -3,6 +3,8 @@ import json
 import requests
 import azure.functions as func
 
+spotify_client_id = None
+spotify_secret = None
 spotify_token_endpoint = "https://accounts.spotify.com/api/token"
 
 
